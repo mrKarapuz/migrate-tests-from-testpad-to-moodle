@@ -8,25 +8,29 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      # Шаг 1: Клонирование репозитория
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Шаг 2: Установка Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
-      # Шаг 3: Установка Auto-py-to-exe
-      - name: Install auto-py-to-exe
-        run: pip install auto-py-to-exe
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          poetry-version: 1.3.2
+          
+      - name: Install dependencies
+        run: poetry install
 
-      # Шаг 4: Сборка EXE через Auto-py-to-exe
+      - name: Install dependencies
+        run: |
+          pip install auto-py-to-exe
+
       - name: Build EXE with auto-py-to-exe
         run: python -m auto_py_to_exe --noconsole --onefile --input src/main.py --output dist/
 
-      # Шаг 5: Загрузка артефакта (готового EXE файла)
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
