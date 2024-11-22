@@ -10,22 +10,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           poetry-version: 1.3.2
+
       - name: Install dependencies
         run: |
-          pip install auto-py-to-exe
+          pip install pyinstaller
           pip install typing_extensions
-      - name: Install dependencies
-        run: pip install pyinstaller
+          poetry install
+
       - name: Build EXE
         run: pyinstaller --onefile --noconsole src/main.py
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
