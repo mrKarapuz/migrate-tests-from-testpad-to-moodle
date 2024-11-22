@@ -41,13 +41,7 @@ jobs:
 
       # Шаг 6: Сборка EXE файла через PyInstaller
       - name: Build EXE
-        run: |
-          pyinstaller --onefile --noconsole \
-            --hidden-import html2text \
-            --hidden-import pre_commit \
-            --hidden-import pydantic \
-            --hidden-import wx \
-            src/main.py
+        run: pyinstaller --onefile --noconsole src/main.py
 
       # Шаг 7: Загрузка артефактов
       - name: Upload artifact
