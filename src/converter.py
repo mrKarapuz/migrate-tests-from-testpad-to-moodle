@@ -23,7 +23,7 @@ class Converter:
     def _create_aiken_file(self, content: str):
         output_file = os.path.splitext(os.path.basename(self.archive_path))[0] + ".txt"
         FileService.write_file(
-            file_path=os.path.join(settings.BASE_DIR, output_file),
+            file_path=output_file,
             text=content,
         )
 
