@@ -24,12 +24,7 @@ jobs:
 
       # Шаг 4: Сборка EXE через Auto-py-to-exe
       - name: Build EXE with auto-py-to-exe
-        run: |
-          python -m auto_py_to_exe \
-            --noconsole \
-            --onefile \
-            --input src/main.py \
-            --output dist/
+        run: python -m auto_py_to_exe --noconsole --onefile --input src/main.py --output dist/
 
       # Шаг 5: Загрузка артефакта (готового EXE файла)
       - name: Upload artifact
