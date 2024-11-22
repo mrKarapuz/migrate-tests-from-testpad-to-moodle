@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "migrate-tests-from-testpad-to-moodle"
+version = "0.1.0"
+description = ""
+authors = ["Ivan Konov <i_konov@ukr.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+html2text = "^2024.2.26"
+pre-commit = "^4.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 125
+include = '\.py$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | env
+)/
+'''
+
+[tool.isort]
+line_length = 100
+default_section = "FIRSTPARTY"
+force_single_line = true

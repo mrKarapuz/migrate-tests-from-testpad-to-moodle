@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-merge-conflict
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v2.4.0
+    hooks:
+      - id: add-trailing-comma
+
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.3.1
+    hooks:
+      - id: autoflake
+        args: [ --remove-all-unused-imports, --recursive, --remove-unused-variables, --in-place, --exclude=__init__.py ]
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
