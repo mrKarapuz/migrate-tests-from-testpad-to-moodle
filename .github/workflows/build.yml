@@ -8,28 +8,38 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      # Шаг 1: Клонирование репозитория
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Шаг 2: Установка Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
+      # Шаг 3: Установка Poetry
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           poetry-version: 1.3.2
 
+      # Шаг 4: Проверка доступности Poetry
+      - name: Verify Poetry installation
+        run: poetry --version
+
+      # Шаг 5: Установка зависимостей через Poetry
       - name: Install dependencies
         run: |
+          poetry install
           pip install pyinstaller
           pip install typing_extensions
-          poetry install
 
+      # Шаг 6: Сборка EXE файла через PyInstaller
       - name: Build EXE
         run: pyinstaller --onefile --noconsole src/main.py
 
+      # Шаг 7: Загрузка артефактов
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
