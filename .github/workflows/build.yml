@@ -22,7 +22,7 @@ jobs:
       - name: Install Poetry
         run: |
           pip install poetry
-          echo "::add-path::$(poetry env info --path)"
+          echo "$(pip show poetry | grep Location | awk '{print $2}')/Scripts" >> $GITHUB_ENV
 
       # Шаг 4: Проверка доступности Poetry
       - name: Verify Poetry installation
