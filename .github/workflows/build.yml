@@ -31,8 +31,11 @@ jobs:
       # Шаг 5: Установка зависимостей через Poetry
       - name: Install dependencies
         run: |
-          poetry add html2text==2024.2.26 pre-commit==4.0.1 pydantic==2.10.1 wxpython==4.2.2
           poetry install
+          pip install html2text==2024.2.26
+          pip install pre-commit==4.0.1
+          pip install pydantic==2.10.1
+          pip install wxpython==4.2.2
           pip install pyinstaller
           pip install typing_extensions
 
